@@ -1,0 +1,6 @@
+{
+  "name": "Veriflow",
+  "description": "Autonomous Playwright and Gemini QA runner for e-commerce authentication, cart integrity, checkout idempotency, and runtime diagnostics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

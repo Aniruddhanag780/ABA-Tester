@@ -1,0 +1,83 @@
+{
+  "id": "run-mwnqjz64-cape",
+  "createdAt": "2026-11-19T15:59:28.972Z",
+  "status": "error",
+  "config": {
+    "targetUrl": "http://localhost:3000/demo-store",
+    "authMethod": "phone_otp",
+    "masterOtp": "123456",
+    "testPhone": "5556497056",
+    "testName": "QA Verifier",
+    "engineMode": "ai_vision",
+    "suites": [
+      "auth_otp",
+      "cart_abuse",
+      "double_click",
+      "checkout_tricks",
+      "health_audit",
+      "chaos_resilience"
+    ],
+    "maxSteps": 8
+  },
+  "currentStep": 1,
+  "steps": [
+    {
+      "stepNumber": 1,
+      "timestamp": "2026-11-19T15:59:30.727Z",
+      "phase": "setup",
+      "action": "navigate",
+      "target": "http://localhost:3000/demo-store",
+      "thought": "Opened target storefront in headless Chromium and captured baseline DOM and screenshot.",
+      "outcome": "ok",
+      "detail": "Loaded http://localhost:3000/demo-store",
+      "url": "http://localhost:3000/demo-store",
+      "screenshotUrl": "/api/runs/run-mwnqjz64-cape/screenshots/step-01.png",
+      "durationMs": 1202
+    }
+  ],
+  "findings": [
+    {
+      "id": "f-img-1",
+      "title": "Broken product or media image (Brushed Steel Hand Grinder)",
+      "severity": "high",
+      "category": "health_audit",
+      "expected": "All visible <img> elements should resolve with HTTP 200 and non-zero naturalWidth.",
+      "actual": "Image \"/demo-api/assets/missing-grinder-photo.jpg\" failed to render (naturalWidth = 0).",
+      "reproductionSteps": [
+        "Navigate to http://localhost:3000/demo-store",
+        "Inspect image \"Brushed Steel Hand Grinder\" (/demo-api/assets/missing-grinder-photo.jpg)"
+      ],
+      "evidence": "/demo-api/assets/missing-grinder-photo.jpg",
+      "screenshotUrl": "/api/runs/run-mwnqjz64-cape/screenshots/step-01.png",
+      "url": "http://localhost:3000/demo-store",
+      "detectedAtStep": 1
+    }
+  ],
+  "networkFailures": [],
+  "consoleErrors": [],
+  "brokenAssets": [
+    {
+      "url": "/demo-api/assets/missing-grinder-photo.jpg",
+      "tagName": "img",
+      "text": "Brushed Steel Hand Grinder",
+      "reason": "naturalWidth === 0 after load",
+      "pageUrl": "http://localhost:3000/demo-store",
+      "stepNumber": 1
+    }
+  ],
+  "summary": {
+    "totalSteps": 1,
+    "totalBugs": 1,
+    "criticalCount": 0,
+    "highCount": 1,
+    "mediumCount": 0,
+    "lowCount": 0,
+    "networkFailuresCount": 0,
+    "consoleErrorsCount": 0,
+    "brokenAssetsCount": 1,
+    "durationMs": 7016
+  },
+  "latestScreenshotUrl": "/api/runs/run-mwnqjz64-cape/screenshots/step-01.png",
+  "errorMessage": "{\"error\":{\"code\":503,\"message\":\"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\"status\":\"UNAVAILABLE\"}}",
+  "completedAt": "2026-11-19T15:59:35.988Z"
+}

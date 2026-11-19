@@ -1,0 +1,152 @@
+{
+  "id": "run-mwnql91h-xoe3",
+  "createdAt": "2026-11-19T16:00:28.421Z",
+  "status": "running",
+  "config": {
+    "targetUrl": "http://localhost:3000/demo-store",
+    "authMethod": "phone_otp",
+    "masterOtp": "123456",
+    "testPhone": "5558408896",
+    "testName": "QA Verifier",
+    "engineMode": "deterministic",
+    "suites": [
+      "auth_otp",
+      "cart_abuse",
+      "double_click",
+      "checkout_tricks",
+      "health_audit",
+      "chaos_resilience"
+    ],
+    "maxSteps": 14
+  },
+  "currentStep": 5,
+  "steps": [
+    {
+      "stepNumber": 1,
+      "timestamp": "2026-11-19T16:00:30.346Z",
+      "phase": "health_audit",
+      "action": "check_dom",
+      "target": "http://localhost:3000/demo-store",
+      "thought": "Inspecting initial storefront load, broken images, and console/network baseline.",
+      "outcome": "warning",
+      "detail": "Loaded \"Veriflow — Autonomous E-Commerce QA Runner\" (6 buttons, 1 broken images)",
+      "url": "http://localhost:3000/demo-store",
+      "screenshotUrl": "/api/runs/run-mwnql91h-xoe3/screenshots/step-01.png",
+      "durationMs": 24
+    },
+    {
+      "stepNumber": 2,
+      "timestamp": "2026-11-19T16:00:31.043Z",
+      "phase": "auth_otp",
+      "action": "click",
+      "target": "Sign In",
+      "thought": "Opening authentication modal/page to test Phone + OTP registration.",
+      "outcome": "ok",
+      "detail": "Opened Sign In / Account flow",
+      "url": "http://localhost:3000/demo-store",
+      "screenshotUrl": "/api/runs/run-mwnql91h-xoe3/screenshots/step-02.png",
+      "durationMs": 410
+    },
+    {
+      "stepNumber": 3,
+      "timestamp": "2026-11-19T16:00:31.617Z",
+      "phase": "auth_otp",
+      "action": "fill",
+      "target": "Phone Input",
+      "value": "12",
+      "thought": "Testing invalid short phone validation before registering fresh test user.",
+      "outcome": "ok",
+      "detail": "Submitted short phone \"12\" to verify validation guard",
+      "url": "http://localhost:3000/demo-store",
+      "screenshotUrl": "/api/runs/run-mwnql91h-xoe3/screenshots/step-03.png",
+      "durationMs": 383
+    },
+    {
+      "stepNumber": 4,
+      "timestamp": "2026-11-19T16:00:32.261Z",
+      "phase": "auth_otp",
+      "action": "fill",
+      "target": "Phone Input",
+      "value": "5558408896",
+      "thought": "Creating fresh user with phone 5558408896.",
+      "outcome": "ok",
+      "detail": "Submitted phone 5558408896",
+      "url": "http://localhost:3000/demo-store",
+      "screenshotUrl": "/api/runs/run-mwnql91h-xoe3/screenshots/step-04.png",
+      "durationMs": 470
+    },
+    {
+      "stepNumber": 5,
+      "timestamp": "2026-11-19T16:01:02.966Z",
+      "phase": "auth_otp",
+      "action": "fill",
+      "target": "OTP Input",
+      "value": "123456",
+      "thought": "Completing authentication using master OTP 123456.",
+      "outcome": "ok",
+      "detail": "Verified session with OTP 123456",
+      "url": "http://localhost:3000/demo-store",
+      "screenshotUrl": "/api/runs/run-mwnql91h-xoe3/screenshots/step-05.png",
+      "durationMs": 30521
+    }
+  ],
+  "findings": [
+    {
+      "id": "f-img-1",
+      "title": "Broken product or media image (Brushed Steel Hand Grinder)",
+      "severity": "high",
+      "category": "health_audit",
+      "expected": "All visible <img> elements should resolve with HTTP 200 and non-zero naturalWidth.",
+      "actual": "Image \"/demo-api/assets/missing-grinder-photo.jpg\" failed to render (naturalWidth = 0).",
+      "reproductionSteps": [
+        "Navigate to http://localhost:3000/demo-store",
+        "Inspect image \"Brushed Steel Hand Grinder\" (/demo-api/assets/missing-grinder-photo.jpg)"
+      ],
+      "evidence": "/demo-api/assets/missing-grinder-photo.jpg",
+      "screenshotUrl": "/api/runs/run-mwnql91h-xoe3/screenshots/step-01.png",
+      "url": "http://localhost:3000/demo-store",
+      "detectedAtStep": 1
+    }
+  ],
+  "networkFailures": [
+    {
+      "timestamp": "2026-11-19T16:00:31.177Z",
+      "url": "http://localhost:3000/demo-api/auth/send-otp",
+      "method": "POST",
+      "status": 400,
+      "statusText": "Bad Request",
+      "stepNumber": 2
+    }
+  ],
+  "consoleErrors": [
+    {
+      "timestamp": "2026-11-19T16:00:31.177Z",
+      "type": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 400 (Bad Request)",
+      "stepNumber": 2
+    }
+  ],
+  "brokenAssets": [
+    {
+      "url": "/demo-api/assets/missing-grinder-photo.jpg",
+      "tagName": "img",
+      "text": "Brushed Steel Hand Grinder",
+      "reason": "naturalWidth === 0 after load",
+      "pageUrl": "http://localhost:3000/demo-store",
+      "stepNumber": 1
+    }
+  ],
+  "summary": {
+    "totalSteps": 5,
+    "totalBugs": 1,
+    "criticalCount": 0,
+    "highCount": 1,
+    "mediumCount": 0,
+    "lowCount": 0,
+    "networkFailuresCount": 1,
+    "consoleErrorsCount": 1,
+    "brokenAssetsCount": 1,
+    "durationMs": 34545
+  },
+  "latestScreenshotUrl": "/api/runs/run-mwnql91h-xoe3/screenshots/step-05.png"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "run-mwnqit8d-mion",
+  "createdAt": "2026-11-19T15:58:34.622Z",
+  "status": "error",
+  "config": {
+    "targetUrl": "http://localhost:3000/demo-store",
+    "authMethod": "phone_otp",
+    "masterOtp": "123456",
+    "testPhone": "5552794950",
+    "testName": "QA Verifier",
+    "engineMode": "ai_vision",
+    "suites": [
+      "auth_otp",
+      "cart_abuse",
+      "double_click",
+      "checkout_tricks",
+      "health_audit",
+      "chaos_resilience"
+    ],
+    "maxSteps": 14
+  },
+  "currentStep": 1,
+  "steps": [],
+  "findings": [],
+  "networkFailures": [],
+  "consoleErrors": [],
+  "brokenAssets": [],
+  "summary": {
+    "totalSteps": 0,
+    "totalBugs": 0,
+    "criticalCount": 0,
+    "highCount": 0,
+    "mediumCount": 0,
+    "lowCount": 0,
+    "networkFailuresCount": 0,
+    "consoleErrorsCount": 0,
+    "brokenAssetsCount": 0,
+    "durationMs": 1747
+  },
+  "latestScreenshotUrl": "/api/runs/run-mwnqit8d-mion/screenshots/step-01.png",
+  "errorMessage": "page.evaluate: ReferenceError: __name is not defined\n    at eval (eval at evaluate (:370:30), <anonymous>:1:147)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+  "completedAt": "2026-11-19T15:58:36.369Z"
+}
